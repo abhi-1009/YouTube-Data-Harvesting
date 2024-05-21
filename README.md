@@ -1,9 +1,9 @@
 # Guvi_CAPSTON_Project_YOUTUBE-DATA-HARVESTING-AND-WAREHOUSING
 
-Introduction
+# Introduction
 Youtube-Data-Harvesting-And-Warehousing YouTube Data Harvesting and Warehousing is a project that intends to provide users with the ability to access and analyse data from numerous YouTube channels. SQL and Streamlit are used in the project to develop a user-friendly application that allows users to retrieve, save, and query YouTube channel and video data.
 
-Project Overview
+# Project Overview
 
 The YouTube Data Harvesting and Warehousing project consists of the following components:
 
@@ -15,7 +15,7 @@ GOOGLE API CLIENT: The googleapiclient library in Python facilitates the communi
 
 YOUTUBE DATA SCRAPPING AND ITS ETHICAL PERSPECTIVE: When engaging in the scraping of YouTube content, it is crucial to approach it ethically and responsibly. Respecting YouTube's terms and conditions, obtaining appropriate authorization, and adhering to data protection regulations are fundamental considerations. The collected data must be handled responsibly, ensuring privacy, confidentiality, and preventing any form of misuse or misrepresentation. Furthermore, it is important to take into account the potential impact on the platform and its community, striving for a fair and sustainable scraping process. By following these ethical guidelines, we can uphold integrity while extracting valuable insights from YouTube data.
 
-Technologies Used
+# Technologies Used
 
 The following technologies are used in this project:
 
@@ -25,7 +25,7 @@ The following technologies are used in this project:
 4.SQL (MySQL): A relational database used as a data warehouse for storing migrated YouTube data.
 5.Pandas: A data manipulation library used for data processing and analysis.
 
-Installation and Setup
+# Installation and Setup
 
 To run the YouTube Data Harvesting and Warehousing project, follow these steps:
 
@@ -36,7 +36,7 @@ To run the YouTube Data Harvesting and Warehousing project, follow these steps:
 5.Configure Application: Update the configuration file or environment variables with the necessary API credentials and database connection details.
 6.Run the Application: Launch the Streamlit application using the command-line interface.
 
-Usage
+# Usage
 
 Once the project is setup and running, users can access the Streamlit application through a web browser. The application will provide a user interface where users can perform the following actions:
 
@@ -45,7 +45,7 @@ Once the project is setup and running, users can access the Streamlit applicatio
 3.Select a channel and migrate its data to the SQL data warehouse.
 4.Search and retrieve data from the SQL database using various search options.
 
-Features
+# Features
 
 The YouTube Data Harvesting and Warehousing application offers the following features:
 
@@ -54,11 +54,11 @@ The YouTube Data Harvesting and Warehousing application offers the following fea
 3.Search and retrieval of data from the SQL database using different search options, including joining tables.
 4.Support for handling multiple YouTube channels and managing their data.
 
-Conclusion
+# Conclusion
 
 The YouTube Data Harvesting and Warehousing project provides a powerful tool for retrieving, storing, and analyzing YouTube channel and video data. By leveraging SQL and Streamlit, users can easily access and manipulate YouTube data in a user-friendly interface. The project offers flexibility, scalability,and empowering users to gain insights from the vast amount of YouTube data available.
 
-References
+# References
 
 Streamlit Documentation: https://docs.streamlit.io/
 YouTube API Documentation: https://developers.google.com/youtube
