@@ -6,7 +6,7 @@ import pandas as pd
 
 # API key connection
 def Api_connect():
-    Api_Id = "AIzaSyBQUHaUibSzgfoe1gAfzLzvqJkQIgctIgY"
+    Api_Id = "------------------------------"
     api_service_name = "youtube"
     api_version = "v3"
     youtube = build(api_service_name, api_version, developerKey=Api_Id)
@@ -17,7 +17,7 @@ youtube = Api_connect()
 mydb=mysql.connector.connect(
              host='localhost',
              user='root',
-             password='Abhi@100982'
+             password='--------'
             )
 mycursor=mydb.cursor()
 query="create database Youtube_Harvesting_Project"
@@ -169,7 +169,7 @@ def create_tables():
     mydb = mysql.connector.connect(
         host='localhost',
         user='root',
-        password='Abhi@100982',
+        password='--------',
         database='Youtube_Harvesting_Project'
     )
     mycursor = mydb.cursor()
@@ -233,7 +233,7 @@ def store_channel_data(channels):
         mydb = mysql.connector.connect(
             host='localhost',
             user='root',
-            password='Abhi@100982',
+            password='--------',
             database='Youtube_Harvesting_Project'
         )
         mycursor = mydb.cursor()
@@ -265,7 +265,7 @@ def store_playlist_data(playlists):
         mydb = mysql.connector.connect(
             host='localhost',
             user='root',
-            password='Abhi@100982',
+            password='--------',
             database='Youtube_Harvesting_Project'
         )
         mycursor = mydb.cursor()
@@ -296,7 +296,7 @@ def store_video_data(videos):
         mydb = mysql.connector.connect(
             host='localhost',
             user='root',
-            password='Abhi@100982',
+            password='--------',
             database='Youtube_Harvesting_Project'
         )
         mycursor = mydb.cursor()
@@ -334,7 +334,7 @@ def store_comment_data(comments):
         mydb = mysql.connector.connect(
             host='localhost',
             user='root',
-            password='Abhi@100982',
+            password='--------',
             database='Youtube_Harvesting_Project'
         )
         mycursor = mydb.cursor()
@@ -415,7 +415,7 @@ def channel_exists(channel_id):
         mydb = mysql.connector.connect(
             host='localhost',
             user='root',
-            password='Abhi@100982',
+            password='--------',
             database='Youtube_Harvesting_Project'
         )
         mycursor = mydb.cursor()
@@ -471,7 +471,7 @@ if st.button("Collect & Show Data"):
             mydb = mysql.connector.connect(
                 host='localhost',
                 user='root',
-                password='Abhi@100982',
+                password='--------',
                 database='Youtube_Harvesting_Project'
             )
             mycursor = mydb.cursor()
@@ -519,7 +519,7 @@ try:
     mydb = mysql.connector.connect(
         host='localhost',
         user='root',
-        password='Abhi@100982',
+        password='--------',
         database='Youtube_Harvesting_Project'
     )
     mycursor = mydb.cursor()
