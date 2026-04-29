@@ -1,76 +1,182 @@
-# Guvi_CAPSTON_Project_YOUTUBE-DATA-HARVESTING-AND-WAREHOUSING
+# YouTube Data Harvesting and Warehousing
 
-# Introduction
-YouTube Data Harvesting and Warehousing is a project that intends to provide users with the ability to access and analyse data from numerous YouTube channels. SQL and Streamlit are used in the project to develop a user-friendly application that allows users to retrieve, save, and query YouTube channel and video data.
+A full-stack data engineering and analytics application that harvests YouTube channel, video, playlist, and comment data via the YouTube Data API v3, stores it in a structured MySQL data warehouse, and provides an interactive Streamlit dashboard for querying and analysis.
 
-# Project Overview
+## Table of Contents
 
-The YouTube Data Harvesting and Warehousing project consists of the following components:
+- [Project Overview](#project-overview)
+- [Technologies Used](#technologies-used)
+- [Features](#features)
+- [Database Schema](#database-schema)
+- [Screenshots](#screenshots)
+- [Installation and Setup](#installation-and-setup)
+- [Usage](#usage)
+- [SQL Queries Supported](#sql-queries-supported)
+- [Ethical Considerations](#ethical-considerations)
+- [References](#references)
 
-STREAMLIT: Streamlit library was used to create a user-friendly UI that enables users to interact with the programme and carry out data retrieval and analysis operations.
+## Project Overview
 
-PYTHON: Python is a powerful programming language renowned for being easy to learn and understand. Python is the primary language employed in this project for the development of the complete application, including data retrieval, processing, analysis, and visualisation.
+This project provides users with the ability to access and analyse data from multiple YouTube channels through a single unified interface. By entering a Channel ID, users can:
+- Extract complete channel metadata, video statistics, playlists, and comments
+- Store all data in a relational MySQL database
+- Run 10 predefined analytical SQL queries via a Streamlit UI
+- View results as formatted Pandas DataFrames in the browser
 
-GOOGLE API CLIENT: The googleapiclient library in Python facilitates the communication with different Google APIs. Its primary purpose in this project is to interact with YouTube's Data API v3, allowing the retrieval of essential information like channel details, video specifics, and comments. By utilizing googleapiclient, developers can easily access and manipulate YouTube's extensive data resources through code.
+## Technologies Used
 
-YOUTUBE DATA SCRAPPING AND ITS ETHICAL PERSPECTIVE: When engaging in the scraping of YouTube content, it is crucial to approach it ethically and responsibly. Respecting YouTube's terms and conditions, obtaining appropriate authorization, and adhering to data protection regulations are fundamental considerations. The collected data must be handled responsibly, ensuring privacy, confidentiality, and preventing any form of misuse or misrepresentation. Furthermore, it is important to take into account the potential impact on the platform and its community, striving for a fair and sustainable scraping process. By following these ethical guidelines, we can uphold integrity while extracting valuable insights from YouTube data.
+| Technology                   | Version | Purpose |
+| **Python**                   | 3.9+    | Core application language |
+| **Streamlit**                | 1.x     | Interactive web UI |
+| **YouTube Data API v3**      | v3      | Channel, video, playlist & comment extraction |
+| **google-api-python-client** | latest  | Python client for Google APIs |
+| **MySQL**                    | 8.0     | Relational data warehouse |
+| **mysql-connector-python**   | latest  | Python–MySQL bridge |
+| **Pandas**                   | 2.x     | Data manipulation and DataFrame display |
 
-# Technologies Used
+### Python Libraries Used (from source code)
+```python
+import streamlit as st
+from googleapiclient.discovery import build
+import mysql.connector
+import pandas as pd
+```
+## Features
+- **Channel Data Extraction** — Retrieves channel ID, name, description, upload playlist, video count, view count, and subscriber count
+- **Video Data Extraction** — Fetches up to 50 videos per API call with full metadata: title, description, publish date, tags, views, likes, favourites,   comment count, duration, and caption status
+- **Comment Extraction** — Collects top-level comments (up to 100 per video) with author name, text, and publish date
+- **Playlist Extraction** — Retrieves all playlists for a channel with title, video count, and publish date
+- **MySQL Data Warehouse** — Stores all data in 4 normalized, relational tables with foreign key constraints
+- **Duplicate Detection** — Checks if a channel already exists in the database before inserting
+- **10 Analytical SQL Queries** — Predefined queries answerable directly from the Streamlit dropdown
+- **Multi-channel Support** — Batch-insert data for up to 10+ channels simultaneously
 
-The following technologies are used in this project:
+## Database Schema
+```Youtube_Harvesting_Project
+│
+├── Channels
+│   ├── channel_id (PK)
+│   ├── channel_name
+│   ├── channel_des
+│   ├── Playlist_Ids
+│   ├── channel_vc
+│   ├── channel_viewc
+│   └── channel_sub
+│
+├── Playlist
+│   ├── Playlist_Ids (PK)
+│   ├── Title
+│   ├── channel_id (FK → Channels)
+│   ├── channel_name
+│   ├── PublishedAt
+│   └── Video_Count
+│
+├── Videos
+│   ├── video_id (PK)
+│   ├── channel_id (FK → Channels)
+│   ├── video_name
+│   ├── video_description
+│   ├── video_publishedAt
+│   ├── video_thumbnails
+│   ├── video_tags
+│   ├── video_views
+│   ├── video_likes
+│   ├── video_favorite
+│   ├── comment_count
+│   ├── video_duration
+│   └── video_caption
+│
+└── Comment
+    ├── comment_id (PK)
+    ├── video_id (FK → Videos)
+    ├── author_name
+    ├── text
+    └── comment_publishedAt
+```
+## Installation and Setup
 
-1.Python: The programming language used for building the application and scripting tasks.
-2.Streamlit: A Python library used for creating interactive web applications and data visualizations.
-3.YouTube API: Google API is used to retrieve channel and video data from YouTube.
-4.SQL (MySQL): A relational database used as a data warehouse for storing migrated YouTube data.
-5.Pandas: A data manipulation library used for data processing and analysis.
+### Prerequisites
+- Python 3.9 or higher
+- MySQL Server 8.0+
+- A Google Cloud account with YouTube Data API v3 enabled
 
-# Installation and Setup
+### Step 1 — Clone the Repository
+```bash
+git clone https://github.com/abhi-1009/YouTube-Data-Harvesting.git
+cd YouTube-Data-Harvesting
+```
+### Step 2 — Install Required Libraries
+```bash
+pip install streamlit pandas google-api-python-client mysql-connector-python
+```
+### Step 3 — Set Up Google API Key
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project → Enable **YouTube Data API v3**
+3. Generate an **API Key** under Credentials
+4. Replace the placeholder in the code:
+```python
+Api_Id = "YOUR_YOUTUBE_API_KEY_HERE"
+```
+### Step 4 — Configure MySQL
+1. Start your MySQL server
+2. Update the connection credentials in the code:
+```python
+mydb = mysql.connector.connect(
+    host='localhost',
+    user='your_username',
+    password='your_password'
+)
+```
+3. The database `Youtube_Harvesting_Project` and all 4 tables are created automatically on first run
 
-To run the YouTube Data Harvesting and Warehousing project, follow these steps:
+### Step 5 — Run the Application
+```bash
+streamlit run youtube_harvesting.py
+```
 
-1.Install Python: Install the Python programming language on your machine.
-2.Install Required Libraries: Install the necessary Python libraries using pip or conda package manager. Required libraries include Streamlit, Pandas.
-3.Set Up Google API: Set up a Google API project and obtain the necessary API credentials for accessing the YouTube API.
-4.Configure Database: Set up a SQL database (MySQL) for storing the data.
-5.Configure Application: Update the configuration file or environment variables with the necessary API credentials and database connection details.
-6.Run the Application: Launch the Streamlit application using the command-line interface.
+Open your browser at `http://localhost:8501`
 
-# Usage
+## Usage
+1. **Enter a YouTube Channel ID** in the text input field
+2. Click **Migrate to SQL** to extract and store all channel data
+3. Use the **Radio button** to select which table to view (Channels / Playlists / Videos / Comments)
+4. Click **Collect & Show Data** to display the table for that channel
+5. Select any question from the **dropdown** to run a predefined SQL analytical query
 
-Once the project is setup and running, users can access the Streamlit application through a web browser. The application will provide a user interface where users can perform the following actions:
+## SQL Queries Supported
 
-1.Enter a YouTube channel ID to retrieve data for that channel.
-2.Collect and store data for multiple YouTube channels.
-3.Select a channel and migrate its data to the SQL data warehouse.
-4.Search and retrieve data from the SQL database using various search options.
+| Q1   | Names of all videos and their corresponding channels |
+| Q2   | Channels with the most number of videos |
+| Q3   | Top 10 most viewed videos and their channels |
+| Q4   | Number of comments on each video |
+| Q5   | Videos with the highest number of likes |
+| Q6   | Total likes for each video |
+| Q7   | Total views for each channel |
+| Q8   | Channels that published videos in a specific year |
+| Q9   | Average duration of videos per channel |
+| Q10  | Videos with the highest number of comments |
 
-# Features
+## Ethical Considerations
+This project follows responsible data collection practices:
+- Uses the **official YouTube Data API v3** — no scraping of HTML/DOM
+- Respects YouTube's **Terms of Service** and API usage quotas
+- Collected data is used **purely for analytical purposes**
+- No personally identifiable information (PII) is stored beyond what the public YouTube API returns
+- API keys are not hardcoded in production — use environment variables
+```python
+import os
+Api_Id = os.environ.get("YOUTUBE_API_KEY")
+```
 
-The YouTube Data Harvesting and Warehousing application offers the following features:
+## References
+- [Streamlit Documentation](https://docs.streamlit.io/)
+- [YouTube Data API v3 Documentation](https://developers.google.com/youtube/v3)
+- [Google API Python Client](https://github.com/googleapis/google-api-python-client)
+- [Python Documentation](https://docs.python.org/)
+- [MySQL Connector Python](https://dev.mysql.com/doc/connector-python/en/)
 
-1.Retrieval of channel and video data from YouTube using the YouTube API.
-2.Migration of data to a SQL database for efficient querying and analysis.
-3.Search and retrieval of data from the SQL database using different search options, including joining tables.
-4.Support for handling multiple YouTube channels and managing their data.
-
-# Conclusion
-
-The YouTube Data Harvesting and Warehousing project provides a powerful tool for retrieving, storing, and analyzing YouTube channel and video data. By leveraging SQL and Streamlit, users can easily access and manipulate YouTube data in a user-friendly interface. The project offers flexibility, scalability,and empowering users to gain insights from the vast amount of YouTube data available.
-
-# References
-
-Streamlit Documentation: https://docs.streamlit.io/
-YouTube API Documentation: https://developers.google.com/youtube
-Python Documentation: https://docs.python.org/
-
-
-
-
-
-
-
-
-
-
-
+## Author
+**Abhijit Sinha**
+- GitHub: [@abhi-1009](https://github.com/abhi-1009)
+- LinkedIn: [abhijit-sinha-053b159a](https://linkedin.com/in/abhijit-sinha-053b159a)
+- Email: sinhaabhijit12@yahoo.com
