@@ -24,6 +24,8 @@ This project provides users with the ability to access and analyse data from mul
 - View results as formatted Pandas DataFrames in the browser
 
 ## Technologies Used
+Technology                        Version         Purpose
+1. **Python**                       3.9+          Core application language
 
 | Technology                   | Version | Purpose |
 | **Python**                   | 3.9+    | Core application language |
