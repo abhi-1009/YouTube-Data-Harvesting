@@ -1,4 +1,9 @@
-# YouTube Data Harvesting and Warehousing
+## YouTube Data Harvesting and Warehousing
+![Python](https://img.shields.io/badge/Python-3.9+-blue?style=flat&logo=python)
+![Streamlit](https://img.shields.io/badge/Streamlit-1.x-red?style=flat&logo=streamlit)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-orange?style=flat&logo=mysql)
+![YouTube API](https://img.shields.io/badge/YouTube%20Data%20API-v3-red?style=flat&logo=youtube)
+![Pandas](https://img.shields.io/badge/Pandas-2.x-green?style=flat&logo=pandas)
 
 A full-stack data engineering and analytics application that harvests YouTube channel, video, playlist, and comment data via the YouTube Data API v3, stores it in a structured MySQL data warehouse, and provides an interactive Streamlit dashboard for querying and analysis.
 
