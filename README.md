@@ -23,14 +23,15 @@ This project provides users with the ability to access and analyse data from mul
 - Run 10 predefined analytical SQL queries via a Streamlit UI
 - View results as formatted Pandas DataFrames in the browser
 
-## Technologies Used
-1. **Python**                   -----    3.9+    -----      **Core application language**
-2. **Streamlit**                -----    1.x     -----      **Interactive web UI**
-3. **YouTube Data API v3**      -----    v3      -----      **Channel, video, playlist & comment extraction**
-4. **google-api-python-client** -----    latest  -----      **Python client for Google APIs**
-5. **MySQL**                    -----    8.0     -----      **Relational data warehouse**
-6. **mysql-connector-python**   -----    latest  -----      **Python–MySQL bridge**
-7. **Pandas**                   -----    2.x     -----      **Data manipulation and DataFrame display**
+| Technology | Version | Purpose |
+| :--- | :---: | :--- |
+| **Python** | 3.9+ | Core application language |
+| **Streamlit** | 1.x | Interactive web UI |
+| **YouTube Data API v3** | v3 | Channel, video, playlist & comment extraction |
+| **google-api-python-client** | latest | Python client for Google APIs |
+| **MySQL** | 8.0 | Relational data warehouse |
+| **mysql-connector-python** | latest | Python–MySQL bridge |
+| **Pandas** | 2.x | Data manipulation and DataFrame display |
                  
 ### Python Libraries Used (from source code)
 ```python
