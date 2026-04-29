@@ -8,7 +8,6 @@ A full-stack data engineering and analytics application that harvests YouTube ch
 - [Technologies Used](#technologies-used)
 - [Features](#features)
 - [Database Schema](#database-schema)
-- [Screenshots](#screenshots)
 - [Installation and Setup](#installation-and-setup)
 - [Usage](#usage)
 - [SQL Queries Supported](#sql-queries-supported)
@@ -23,6 +22,7 @@ This project provides users with the ability to access and analyse data from mul
 - Run 10 predefined analytical SQL queries via a Streamlit UI
 - View results as formatted Pandas DataFrames in the browser
 
+## Technologies Used
 | Technology | Version | Purpose |
 | :--- | :---: | :--- |
 | **Python** | 3.9+ | Core application language |
@@ -127,12 +127,10 @@ mydb = mysql.connector.connect(
 )
 ```
 3. The database `Youtube_Harvesting_Project` and all 4 tables are created automatically on first run
-
 ### Step 5 — Run the Application
 ```bash
 streamlit run youtube_harvesting.py
 ```
-
 Open your browser at `http://localhost:8501`
 
 ## Usage
@@ -143,16 +141,18 @@ Open your browser at `http://localhost:8501`
 5. Select any question from the **dropdown** to run a predefined SQL analytical query
 
 ## SQL Queries Supported
-1.  **Names of all videos and their corresponding channels**
-2.  **Channels with the most number of videos**
-3.  **Top 10 most viewed videos and their channels**
-4.  **Number of comments on each video**
-5.  **Videos with the highest number of likes**
-6.  **Total likes for each video**
-7.  **Total views for each channel**
-8.  **Channels that published videos in a specific year**
-9.  **Average duration of videos per channel**
-10. **Videos with the highest number of comments**
+| # | Query |
+| :---: | :--- |
+| Q1 | Names of all videos and their corresponding channels |
+| Q2 | Channels with the most number of videos |
+| Q3 | Top 10 most viewed videos and their channels |
+| Q4 | Number of comments on each video |
+| Q5 | Videos with the highest number of likes |
+| Q6 | Total likes for each video |
+| Q7 | Total views for each channel |
+| Q8 | Channels that published videos in a specific year |
+| Q9 | Average duration of videos per channel |
+| Q10 | Videos with the highest number of comments |
 
 ## Ethical Considerations
 This project follows responsible data collection practices:
@@ -165,7 +165,6 @@ This project follows responsible data collection practices:
 import os
 Api_Id = os.environ.get("YOUTUBE_API_KEY")
 ```
-
 ## References
 - [Streamlit Documentation](https://docs.streamlit.io/)
 - [YouTube Data API v3 Documentation](https://developers.google.com/youtube/v3)
