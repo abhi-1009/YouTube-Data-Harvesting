@@ -24,13 +24,13 @@ This project provides users with the ability to access and analyse data from mul
 - View results as formatted Pandas DataFrames in the browser
 
 ## Technologies Used
-1. **Python**                       3.9+    -----      Core application language
-2. **Streamlit**                    1.x     -----      Interactive web UI
-3. **YouTube Data API v3**          v3      -----      Channel, video, playlist & comment extraction
-4. **google-api-python-client**     latest  -----      Python client for Google APIs
-5. **MySQL**                        8.0     -----      Relational data warehouse
-6. **mysql-connector-python**       latest  -----      Python–MySQL bridge
-7. **Pandas**                       2.x     -----      Data manipulation and DataFrame display
+1. **Python**                   -----    3.9+    -----      **Core application language**
+2. **Streamlit**                -----    1.x     -----      **Interactive web UI**
+3. **YouTube Data API v3**      -----    v3      -----      **Channel, video, playlist & comment extraction**
+4. **google-api-python-client** -----    latest  -----      **Python client for Google APIs**
+5. **MySQL**                    -----    8.0     -----      **Relational data warehouse**
+6. **mysql-connector-python**   -----    latest  -----      **Python–MySQL bridge**
+7. **Pandas**                   -----    2.x     -----      **Data manipulation and DataFrame display**
                  
 ### Python Libraries Used (from source code)
 ```python
@@ -142,16 +142,16 @@ Open your browser at `http://localhost:8501`
 5. Select any question from the **dropdown** to run a predefined SQL analytical query
 
 ## SQL Queries Supported
-1.  Names of all videos and their corresponding channels
-2.  Channels with the most number of videos
-3.  Top 10 most viewed videos and their channels
-4.  Number of comments on each video
-5.  Videos with the highest number of likes
-6.  Total likes for each video
-7.  Total views for each channel
-8.  Channels that published videos in a specific year
-9.  Average duration of videos per channel
-10. Videos with the highest number of comments
+1.  **Names of all videos and their corresponding channels**
+2.  **Channels with the most number of videos**
+3.  **Top 10 most viewed videos and their channels**
+4.  **Number of comments on each video**
+5.  **Videos with the highest number of likes**
+6.  **Total likes for each video**
+7.  **Total views for each channel**
+8.  **Channels that published videos in a specific year**
+9.  **Average duration of videos per channel**
+10. **Videos with the highest number of comments**
 
 ## Ethical Considerations
 This project follows responsible data collection practices:
